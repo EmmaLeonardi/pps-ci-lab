@@ -1,0 +1,20 @@
+on:
+  push:
+    branches:
+    - develop
+jobs:
+  Build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout # custom name Checkout the repository
+      uses: actions/checkout@v2 # Action implemented in this repository, tag "2"
+
+    - name: Java setup
+      uses: actions/setup-java@v4
+      with:
+        distribution: 'temurin' # See 'Supported distributions' for available options
+        java-version: '21'
+        
+    - name: Build
+      run: ./gradlew build
+      
